@@ -1,0 +1,409 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.lunapps</groupId>
+    <artifactId>betoshook</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>betoshook Webapp</name>
+    <url>http://betoshook.il</url>
+
+    <!--PROPERTIES-->
+    <properties>
+        <!--project variables-->
+        <java-version>1.8</java-version>
+
+        <!--spring-->
+        <springframework.version>5.0.1.RELEASE</springframework.version>
+        <spring-data-jpa.version>1.10.2.RELEASE</spring-data-jpa.version>
+        <spring-security.version>4.2.3.RELEASE</spring-security.version>
+        <spring-context-support.version>5.0.1.RELEASE</spring-context-support.version>
+        <spring-social-facebook.version>2.0.3.RELEASE</spring-social-facebook.version>
+        <spring-security-oauth2.version>2.0.13.RELEASE</spring-security-oauth2.version>
+        <spring-security-jwt.version>1.0.8.RELEASE</spring-security-jwt.version>
+
+        <!--hibernate-->
+        <hibernate.version>5.2.10.Final</hibernate.version>
+        <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
+        <hibernate-validator.version>6.0.4.Final</hibernate-validator.version>
+
+        <!--servlet-->
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+
+        <!--db-->
+        <mysql-connector-java.version>5.1.41</mysql-connector-java.version>
+
+        <!--others-->
+        <commons-lang3.version>3.5</commons-lang3.version>
+        <jackson.version>2.9.2</jackson.version>
+        <thymeleaf.version>3.0.7.RELEASE</thymeleaf.version>
+        <swagger.version>2.7.0</swagger.version>
+        <!---->
+        <com.paypal.sdk.version>1.14.0</com.paypal.sdk.version>
+        <com.twilio.sdk.version>7.17.0</com.twilio.sdk.version>
+        <pushy.version>0.13.1</pushy.version>
+
+        <!--plugins-->
+        <maven-war-plugin.version>3.1.0</maven-war-plugin.version>
+        <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
+        <lombok.version>1.16.16</lombok.version>
+        <jjwt.version>0.7.0</jjwt.version>
+
+    </properties>
+
+    <dependencies>
+        <!--SPRING-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring-context-support.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-data-jpa.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+            <version>${spring-security-oauth2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-jwt</artifactId>
+            <version>${spring-security-jwt.version}</version>
+        </dependency>
+
+        <!--todo need for fb-->
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.social</groupId>-->
+        <!--<artifactId>spring-social-config</artifactId>-->
+        <!--<version>${spring.social.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.social</groupId>-->
+        <!--<artifactId>spring-social-core</artifactId>-->
+        <!--<version>${spring.social.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.social</groupId>-->
+        <!--<artifactId>spring-social-security</artifactId>-->
+        <!--<version>${spring.social.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.social</groupId>-->
+        <!--<artifactId>spring-social-web</artifactId>-->
+        <!--<version>${spring.social.version}</version>-->
+        <!--</dependency>-->
+
+        <!-- Spring Social Facebook -->
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-facebook</artifactId>
+            <version>${spring-social-facebook.version}</version>
+        </dependency>
+
+        <!--HIBERNATE-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <version>${hibernate-jpa-2.1-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
+
+        <!--Servlet-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet-api.version}</version>
+        </dependency>
+        <!--todo remove-->
+        <!--<dependency>-->
+        <!--<groupId>javax.servlet</groupId>-->
+        <!--<artifactId>jstl</artifactId>-->
+        <!--&lt;!&ndash;todo: properties&ndash;&gt;-->
+        <!--<version>1.2</version>-->
+        <!--</dependency>-->
+
+        <!-- Jackson JSON-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+
+        <!--DB-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
+        </dependency>
+
+        <!--for test-->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.196</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--LOMBOK-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--LOGGING-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <!--todo: properties-->
+            <version>1.7.25</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <!--todo: properties-->
+            <version>1.7.25</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <!--todo: properties-->
+            <version>1.2.17</version>
+        </dependency>
+
+        <!--OTHERS-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <!--mobile devices-->
+        <!--todo: remove-->
+        <dependency>
+            <groupId>org.springframework.mobile</groupId>
+            <artifactId>spring-mobile-device</artifactId>
+            <!--todo: properties-->
+            <version>1.1.5.RELEASE</version>
+        </dependency>
+        <!--generate token -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+        <!--need for generate e-mail token-->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <!--todo: properties-->
+            <version>1.9</version>
+        </dependency>
+        <!--send mail-->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <!--todo: properties-->
+            <version>1.6.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf</artifactId>
+            <version>${thymeleaf.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf-spring4</artifactId>
+            <version>${thymeleaf.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--upload file-->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+        <!--todo: remove-->
+        <!--<dependency>-->
+        <!--<groupId>commons-io</groupId>-->
+        <!--<artifactId>commons-io</artifactId>-->
+        <!--<version>2.5</version>-->
+        <!--</dependency>-->
+
+        <!--swagger-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+
+        <!--TESTING-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.0.1.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.10.19</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--PAYMENT-->
+        <dependency>
+            <groupId>com.paypal.sdk</groupId>
+            <artifactId>rest-api-sdk</artifactId>
+            <version>${com.paypal.sdk.version}</version>
+        </dependency>
+
+        <!--TWILIO-->
+        <dependency>
+            <groupId>com.twilio.sdk</groupId>
+            <artifactId>twilio</artifactId>
+            <version>${com.twilio.sdk.version}</version>
+        </dependency>
+
+        <!--IOS PUSH NOTIFICATIONS APNS-->
+        <dependency>
+            <groupId>com.turo</groupId>
+            <artifactId>pushy</artifactId>
+            <version>${pushy.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>betoshook</finalName>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>2.3.2</version>
+                    <configuration>
+                        <source>${java-version}</source>
+                        <target>${java-version}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${maven-war-plugin.version}</version>
+                    <configuration>
+                        <warSourceDirectory>src/main/webapp/WEB-INF</warSourceDirectory>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>2.2</version>
+                    <configuration>
+                        <path>/</path>
+                        <server>betoshook-test-server</server>
+                        <url>http://localhost:8080/manager/text</url>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:remove="all">[Betoshook]Registration</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h2 th:text="#{application.title}">BETOSHOOK TITLE</h2>
+<h3 th:text="#{application.greeting(${name})}">BETOSHOOK GREETING</h3>
+You just successfully <span th:text="#{application.confirm}">register or change</span> the password on the service
+BETOSHOOK.
+<br>
+To confirm your actions, please follow the <a th:href="#{application.confirm.url} + ${token}">link</a>
+<p>
+    Regards, <br/>
+    <em>The Betoshook Team</em>
+</p>
+</body>
+</html>
+
